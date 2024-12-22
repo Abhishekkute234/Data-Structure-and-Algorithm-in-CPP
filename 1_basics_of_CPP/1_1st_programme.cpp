@@ -1,8 +1,8 @@
-// first programme 
-#include<iostream>
+// first programme
+#include <iostream>
 using namespace std;
-int main(){
-    cout<<"Hello Abhishek";
-    cout<<"\n";
-
+int main()
+{
+    cout << "Hello Abhishek";
+    cout << "\n";
 }
