@@ -42,18 +42,36 @@ node *builtTree(node *root)
   return root;
 }
 
-int maxheigth(node *root)
+pair<int, int> diameterfast(node *root)
 {
-
-  if (root == NULL)
+  if (root == nullptr)
   {
-    return 0;
+    return {0, 0}; // {height, diameter}
   }
+  // fisrt ->> diameter
+  //  second ->> height
+  // Recursive calls for left and right subtrees
+  pair<int, int> left = diameterfast(root->left);
+  pair<int, int> right = diameterfast(root->right);
 
-  int left = maxheigth(root->left);
-  int right = maxheigth(root->right);
+  // Current height
+  int height = max(left.first, right.first) + 1;
 
-  return max(left, right) + 1;
+  // Options for diameter:
+  int opt1 = left.second;              // Diameter of the left subtree
+  int opt2 = right.second;             // Diameter of the right subtree
+  int opt3 = left.first + right.first; // Diameter passing through root
+
+  // Current diameter
+  int diameter = max(opt1, max(opt2, opt3));
+
+  // Return {height, diameter}
+  return {height, diameter};
+}
+
+int diameter(node *root)
+{
+  return diameterfast(root).second;
 }
 
 int main()
