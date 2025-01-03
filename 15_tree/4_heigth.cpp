@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 class node
@@ -42,6 +42,19 @@ node *builtTree(node *root)
   return root;
 }
 
+int maxheigth(node *root)
+{
+
+  if (root == NULL)
+  {
+    return 0;
+  }
+
+  int left = maxheigth(root->left);
+  int right = maxheigth(root->right);
+
+  return max(left, right) + 1;
+}
 int main()
 {
   node *root = NULL;
