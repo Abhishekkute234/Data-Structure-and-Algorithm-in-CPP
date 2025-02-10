@@ -20,65 +20,44 @@ public:
   }
 };
 
-node *builtTree(node *root)
+// calling the diameter and the heigth
+// 1st diameter
+// 2nd heigth
+pair<int, int> diameterFast(node *root)
 {
-  // creation of root node
-  cout << "Enter the data " << endl;
-  int data;
-  cin >> data;
-  root = new node(data);
 
-  // if data == -1 then consideer it as a null
-
-  if (data == -1)
+  if (root == NULL)
   {
-    return NULL;
+    pair<int, int> p = make_pair(0, 0);
+    return p;
   }
 
-  cout << "enter the data in LEFT " << data << endl;
-  root->left = builtTree(root->left);
-  cout << "enter the data in RIGHT " << data << endl;
-  root->right = builtTree(root->right);
-  return root;
-}
+  pair<int, int> left = diameterFast(root->left);
+  pair<int, int> right = diameterFast(root->right);
 
-pair<int, int> diameterfast(node *root)
-{
-  if (root == nullptr)
-  {
-    return {0, 0}; // {height, diameter}
-  }
-  // fisrt ->> diameter
-  //  second ->> height
-  // Recursive calls for left and right subtrees
-  pair<int, int> left = diameterfast(root->left);
-  pair<int, int> right = diameterfast(root->right);
+  // conditions
 
-  // Current height
-  int height = max(left.first, right.first) + 1;
+  int opt1 = left.first;
+  int opt2 = right.first;
 
-  // Options for diameter:
-  int opt1 = left.second;              // Diameter of the left subtree
-  int opt2 = right.second;             // Diameter of the right subtree
-  int opt3 = left.first + right.first; // Diameter passing through root
+  int opt3 = left.second + right.second + 1;
 
-  // Current diameter
-  int diameter = max(opt1, max(opt2, opt3));
-
-  // Return {height, diameter}
-  return {height, diameter};
+  pair<int, int> ans;
+  // diameter
+  ans.first = max(opt1, max(opt2, opt3));
+  // height
+  ans.second = max(left.second, right.second) + 1;
+  return ans;
 }
 
 int diameter(node *root)
 {
-  return diameterfast(root).second;
+  return diameterFast(root).first;
 }
 
 int main()
 {
   node *root = NULL;
-  root = builtTree(root);
-  cout << root;
 
   return 0;
 }
