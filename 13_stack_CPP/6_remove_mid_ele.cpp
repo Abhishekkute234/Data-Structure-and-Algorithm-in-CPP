@@ -2,34 +2,26 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-void solve(stack<int> &str ,int count,int n){
-    if(count==n/2){
-        str.pop();
-        return;
-    }
-
-    int num=str.top();
-    str.pop();
-// recursive call
-    solve(str,count+1,n);
-
-    str.push(num);
-}
-
-void delet_mid(stack<int> &str ,int n){
-    int count=0;
-    solve(str,count,n);
-
-}
-
-int main(){
-    stack<int> str;
-    str.push(10);
-    str.push(20);
-    str.push(30);
-    str.push(40);
-    str.push(50);
-
-    delet_mid(str,5);
-
-}
+class Solution {
+    public:
+      // Helper function to remove the middle element
+      void deleteMiddleHelper(stack<int>& s, int count, int mid) {
+          if (count == mid) {
+              s.pop(); // Remove the middle element
+              return;
+          }
+          
+          int temp = s.top();
+          s.pop();
+          deleteMiddleHelper(s, count + 1, mid);
+          s.push(temp); // Push the elements back except the middle one
+      }
+  
+      void deleteMid(stack<int>& s) {
+          if (s.empty()) return;
+  
+          int mid = s.size() / 2;
+          deleteMiddleHelper(s, 0, mid);
+      }
+  };
+  

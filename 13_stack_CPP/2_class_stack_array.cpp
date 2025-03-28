@@ -3,6 +3,8 @@ using namespace std;
 
 class stack{
     public:
+    // top for where to push 
+
     int top=-1;
     int *arr;
     int size;
