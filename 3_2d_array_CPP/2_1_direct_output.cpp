@@ -1,22 +1,34 @@
-// direct output
 #include <iostream>
 using namespace std;
-int main(){
-    
-    int arr[3][4]={1,2,3,4,5,6,7,8,9,10,12,13};
-    // row wise input 
-    for(int i=0;i<3;i++){
-        for(int j=0;j<4;j++){
-            cout<<arr[i][j]<<" ";
+
+int main()
+{
+    int arr[3][4] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 12, 13}};
+
+    // Row-wise printing
+    cout << "Row-wise output:\n";
+    for (int i = 0; i < 3; i++)
+    { // Rows
+        for (int j = 0; j < 4; j++)
+        { // Columns
+            cout << arr[i][j] << " ";
         }
-        cout<<"\n";
+        cout << "\n";
     }
-    cout<<"\n";
-    // column  wise input 
-    for(int i=0;i<3;i++){
-        for(int j=0;j<4;j++){
-            cout<<arr[j][i]<<" ";
+
+    cout << "\nColumn-wise output:\n";
+    // Column-wise printing (fixed)
+    for (int j = 0; j < 4; j++)
+    { // Columns first
+        for (int i = 0; i < 3; i++)
+        { // Then rows
+            cout << arr[i][j] << " ";
         }
-        cout<<"\n";
+        cout << "\n";
     }
+
+    return 0;
 }
