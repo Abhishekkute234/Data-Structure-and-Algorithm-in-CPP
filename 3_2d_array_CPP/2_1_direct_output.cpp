@@ -6,7 +6,8 @@ int main()
     int arr[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
-        {9, 10, 12, 13}};
+        {9, 10, 12, 13}}; // 3x4 matrix
+    // 3x4 = 12 elements
 
     // Row-wise printing
     cout << "Row-wise output:\n";
