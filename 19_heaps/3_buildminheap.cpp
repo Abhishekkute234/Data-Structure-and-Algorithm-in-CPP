@@ -86,26 +86,27 @@ public:
 
 void heapify(int arr[], int n, int i)
 {
-  int largest = i;
-  int left = 2 * i;
-  int right = 2 * i + 1;
+  // start from 0
+  int smallest = i;
+  int left = 2 * i + 1;
+  int right = 2 * i + 2;
 
-  if (left < n && arr[largest] < arr[left])
+  if (left < n && arr[smallest] > arr[left])
   {
     // swap(arr[largest], arr[left]);
-    largest = left;
+    smallest = left;
   }
-  if (right < n && arr[largest] < arr[right])
+  if (right < n && arr[smallest] > arr[right])
   {
     // swap(arr[largest], arr[left]);
-    largest = right;
+    smallest = right;
   }
 
-  if (largest != i)
+  if (smallest != i)
   {
-    swap(arr[largest], arr[i]);
+    swap(arr[smallest], arr[i]);
     // recursion for other comming
-    heapify(arr, n, largest);
+    heapify(arr, n, smallest);
   }
 }
 
