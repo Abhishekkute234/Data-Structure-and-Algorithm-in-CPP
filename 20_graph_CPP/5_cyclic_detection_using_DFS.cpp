@@ -7,29 +7,39 @@
 
 using namespace std;
 
-bool isCyclicDFS(int src, unordered_map<int, bool> &visited, unordered_map<int, list<int>> &adjList, int parent)
+bool isCyclicBFS(int src, unordered_map<int, bool> visited, unordered_map<int, list<int>> adjList)
 {
-  visited[src] = true;
+  unordered_map<int, int> parent;
+  parent[src] = -1;
+  visited[src] = 1;
+  queue<int> q;
+  q.push(src);
 
-  for (auto neighbour : adjList[src])
+  while (!q.empty())
   {
-    if (!visited[neighbour])
+    int front = q.front();
+    q.pop();
+
+    for (auto neighbour : adjList[front])
     {
-      if (isCyclicDFS(neighbour, visited, adjList, src))
+      if (visited[neighbour] == true && neighbour != parent[front])
+      {
         return true;
-    }
-    else if (neighbour != parent)
-    {
-      return true;
+      }
+
+      else if (!visited[neighbour])
+      {
+        q.push(neighbour);
+        visited[neighbour] = 1;
+        parent[neighbour] = front;
+      }
     }
   }
   return false;
 }
 
-// cycylic detection in graph
 string cyclicdetection(vector<vector<int>> &edges, int n, int m)
 {
-  // create an adjacency list
   unordered_map<int, list<int>> adjList;
   for (int i = 0; i < edges.size(); i++)
   {
@@ -37,23 +47,22 @@ string cyclicdetection(vector<vector<int>> &edges, int n, int m)
     int v = edges[i][1];
 
     adjList[u].push_back(v);
-    adjList[v].push_back(u); // For undirected graphs, add edge in both directions
+    adjList[v].push_back(u);
   }
 
-  // to handle disconnected components
   unordered_map<int, bool> visited;
   for (int i = 0; i < n; i++)
   {
     if (!visited[i])
     {
-      bool ans = isCyclicDFS(i, visited, adjList);
+      bool ans = isCyclicBFS(i, visited, adjList);
       if (ans)
       {
         return "yes";
       }
     }
   }
-  return "No"; // Return "No" only after checking all components
+  return "No"; 
 }
 
 int main()
