@@ -1,9 +1,11 @@
-
 #include <iostream>
 #include <vector>
 using namespace std;
+
 class Solution
+
 {
+
 public:
     vector<int> findUnion(vector<int> &arr1, vector<int> &arr2, int n, int m)
     {

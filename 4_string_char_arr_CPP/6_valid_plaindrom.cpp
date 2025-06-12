@@ -53,6 +53,7 @@ public:
 // Example usage
 int main()
 {
+
     Solution sol;
     string str = "A man, a plan, a canal: Panama";
     cout << (sol.isPalindrome(str) ? "Palindrome" : "Not a palindrome") << endl;
