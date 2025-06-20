@@ -54,6 +54,8 @@ public:
 
     // replace 1st node from last
     arr[0] = arr[size];
+
+    // remove that node 
     size--;
 
     // now send root node to its correct position

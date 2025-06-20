@@ -11,10 +11,15 @@ using namespace std;
 // string.find(substring) --> this use to find the starting position of the string --> it  print the 1st index
 // string.erase(start,end) --> to delete the substring in the string
 
-// STEP 1 -
+// STEP 1 -find part and delete the part 
+string removeOccurrences(string s, string part) {
+  while(s.length()>0 && s.find(part)<s.length()){
 
-string removeOccurrences(string s, string part)
-{
+    // start means the staring part of the find and the end mean the length of the end 
+      s.erase(s.find(part),part.length());
+  }
+  return s;
+  
 }
 
 int main()

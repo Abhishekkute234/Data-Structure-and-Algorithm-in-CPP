@@ -2,6 +2,14 @@
 #include <string>
 using namespace std;
 
+
+// STEP 1 - check the character is alphanumeric or not A,a,1 etc
+// StEP 2 - convert to lower case 
+// STEP 3 - create a temperory strign 
+// STEP 4 - convert to lower case 
+// STEP 5 - check start and end upto start<=end
+
+
 class Solution
 {
 private:

@@ -10,6 +10,7 @@ using namespace std;
 
 //  getline (str, size , delimiter )
 // delimiter is a special character use to stop the printing of the string
+
 int main()
 {
   // Character Array (C-style string)
