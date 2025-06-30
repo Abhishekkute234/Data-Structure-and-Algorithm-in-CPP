@@ -1,15 +1,29 @@
-
-// n=2m+1
-// m number do bar hai 
-// only one number doesnt repet 
 #include <iostream>
+#include <math.h>
+#include <vector>
 using namespace std;
 
-void array(int arr[],int size){
-    int ans=0;
-    for(int i=0;i<size;i++){
-        ans=ans^arr[i];
+class Solution
+{
+public:
+    int findDuplicate(vector<int> &nums)
+    {
+        int ind = 0;
+
+        // sort the vector
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() - 1; i++)
+        {
+            // if two consecutive elements are equal
+            // you have find a duplicate
+            // break the loop
+            if (nums[i] == nums[i + 1])
+            {
+                ind = nums[i];
+                break;
+            }
+        }
+        // return duplicate value
+        return ind;
     }
-    return ans;
-}
-// find all duplicte elements 
+};
