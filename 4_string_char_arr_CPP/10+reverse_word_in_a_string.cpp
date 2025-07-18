@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
@@ -14,8 +14,29 @@ string reverseTheWord(string s)
 {
   int n = s.length();
   string ans = "";
+// STEP !
+  reverse(s.begin(), s.end());
+  //  after reverse the string the all words come on there original position 
 
-  reverse_iterator(s.begin(), s.end());
+  // STEP 2
+  for(int i=0 ;i<n;i++){
+
+    string word="";
+    while(i<n && s[i]!=' '){
+      word+=s[i];
+      i++;
+    }
+
+
+    reverse (word.begin(),word.end());
+    if (word.length()>0){
+      ans +=" "+ word;
+    }
+
+
+  }
+  // starting from 1 because the 1st letter is empty 
+return ans.substr(1);
 }
 
 int main()

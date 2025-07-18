@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <algorithm>  // Required for sort
+
 using namespace std;
 
 class Solution
