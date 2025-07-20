@@ -687,7 +687,6 @@ void demonstrateStack()
 
   stack<int> st; // Default underlying container is deque
 
-  // Basic operations - all O(1)
   st.push(10); // Add element to top of stack
   st.push(20);
   st.push(30);
